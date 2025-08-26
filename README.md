@@ -25,19 +25,14 @@ This application demonstrates a simple, modular approach to building a quiz syst
 
 ## Project structure
 quiz-app/
-├─ pom.xml
-├─ src/
-│ ├─ main/
-│ │ ├─ java/
-│ │ │ └─ com/quizapp/
-│ │ │ ├─ Main.java
-│ │ │ ├─ DBConnection.java
-│ │ │ ├─ UserService.java
-│ │ │ ├─ QuizService.java
-│ │ │ ├─ AdminService.java
-│ │ │ └─ UserSession.java
-│ │ └─ resources/
-└─ README.md
+│── src/main/java/com/quizapp/
+│   ├── DBConnection.java   # Database connection
+│   ├── UserService.java    # Handles user login & registration
+│   ├── QuizService.java    # Handles quiz logic
+│   ├── AdminService.java   # Handles admin actions
+│   ├── Main.java           # Entry point (menu-driven application)
+│
+│── pom.xml                 # Maven dependencies & build
 
 
 ## Database schema & sample data
@@ -45,11 +40,11 @@ quiz-app/
 Run these SQL commands in your MySQL client to create the database and tables used by the application.
 
 #SQL
--- 1) Create database
+1) Create database
 CREATE DATABASE quizdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE quizdb;
 
--- 2) Users
+2) Users
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
@@ -58,7 +53,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 3) Quizzes
+3) Quizzes
 CREATE TABLE quizzes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -67,7 +62,7 @@ CREATE TABLE quizzes (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- 4) Questions (multiple choice stored in columns for simplicity)
+4) Questions (multiple choice stored in columns for simplicity)
 CREATE TABLE questions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     quiz_id INT NOT NULL,
@@ -80,7 +75,7 @@ CREATE TABLE questions (
     FOREIGN KEY (quiz_id) REFERENCES quizzes(id) ON DELETE CASCADE
 );
 
--- 5) Results (attempts)
+5) Results (attempts)
 CREATE TABLE results (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
