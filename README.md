@@ -102,5 +102,5 @@ CREATE TABLE results (
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/quiz-app.git
+[git clone https://github.com/SidTirse-13/QUIZ_APP
 cd quiz-app
